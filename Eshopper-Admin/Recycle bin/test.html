@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+<ul class="categorychecklist form-no-clear" data-wp-lists="list:product_cat" id="product_catchecklist">
+
+    <li id="product_cat-231"><label class="selectit"><input type="checkbox" id="in-product_cat-231" name="tax_input[product_cat][]" value="231"> Balls and sport items</label></li>
+
+    <li id="product_cat-204"><label class="selectit"><input type="checkbox" id="in-product_cat-204" name="tax_input[product_cat][]" value="204"> Beauty &amp; Health</label>
+        <ul class="children">
+
+            <li id="product_cat-274"><label class="selectit"><input type="checkbox" id="in-product_cat-274" name="tax_input[product_cat][]" value="274"> Beauty</label> 
+                <ul class="children">
+
+                    <li id="product_cat-205"><label class="selectit"><input type="checkbox" id="in-product_cat-205" name="tax_input[product_cat][]" value="205"> Cosmetics</label></li>
+
+                    <li id="product_cat-273"><label class="selectit"><input type="checkbox" id="in-product_cat-273" name="tax_input[product_cat][]" value="273"> Hair care</label></li>
+
+                    <li id="product_cat-272"><label class="selectit"><input type="checkbox" id="in-product_cat-272" name="tax_input[product_cat][]" value="272"> Skin care</label></li>
+                </ul>
+            </li>
+            <li id="product_cat-214"><label class="selectit"><input type="checkbox" id="in-product_cat-214" name="tax_input[product_cat][]" value="214"> nutrition</label></li>
+        </ul>
+    </li>
+
+    <li class="popular-category" id="product_cat-206"><label class="selectit"><input type="checkbox" id="in-product_cat-206" name="tax_input[product_cat][]" value="206"> Clothing, Shoes &amp; Jewelry</label>
+        <ul class="children">
+
+            <li class="popular-category" id="product_cat-223"><label class="selectit"><input type="checkbox" id="in-product_cat-223" name="tax_input[product_cat][]" value="223"> Accessories &amp; Jewelry</label></li>
+
+            <li class="popular-category" id="product_cat-229"><label class="selectit"><input type="checkbox" id="in-product_cat-229" name="tax_input[product_cat][]" value="229"> Clothing</label></li>
+
+            <li class="popular-category" id="product_cat-208"><label class="selectit"><input type="checkbox" id="in-product_cat-208" name="tax_input[product_cat][]" value="208"> Handbags</label></li>
+
+            <li id="product_cat-217"><label class="selectit"><input type="checkbox" id="in-product_cat-217" name="tax_input[product_cat][]" value="217"> Shoes</label></li>
+        </ul>
+    </li>
+</ul>
+	<script type="text/javascript>
+
+        	$(':checkbox').on('click', function(){
+            // uncheck every checkbox
+            $(':checkbox').prop('checked', false);
+            // set initial variables
+            var checkbox = $(this), $ul, has_parent;
+            // loop
+            do {
+                // tick the selected checkbox
+                checkbox.prop('checked', true);
+                // get its closest UL
+                $ul = checkbox.closest('ul');
+                // check if selected category has a parent
+                has_parent = $ul.prev().is('.selectit');
+                // set the new checkbox to the one that belong to the parent
+                checkbox = $('> input', $ul.prev());
+            } while ( has_parent );
+        });
+	<script>
+</body>
+</html>

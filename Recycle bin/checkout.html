@@ -1,0 +1,243 @@
+<?php include("header.php");?>
+		
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
+								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
+								<li><a href="checkout.html" class="active"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
+	
+		<div class="header-bottom"><!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="index.html">Home</a></li>
+								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shop.html">Products</a></li>
+										<li><a href="product-details.html">Product Details</a></li> 
+										<li><a href="checkout.html" class="active">Checkout</a></li> 
+										<li><a href="cart.html">Cart</a></li> 
+										<li><a href="login.html">Login</a></li> 
+                                    </ul>
+                                </li> 
+								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="blog.html">Blog List</a></li>
+										<li><a href="blog-single.html">Blog Single</a></li>
+                                    </ul>
+                                </li> 
+								<li><a href="contact-us.html">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="search_box pull-right">
+							<input type="text" placeholder="Search"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+
+	<section id="cart_items" style="padding-bottom:50px">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Home</a></li>
+				  <li class="active">Check out</li>
+				</ol>
+			</div><!--/breadcrums-->
+			<div class="review-payment">
+				<h2>Review & Payment</h2>
+			</div>
+
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image">Item</td>
+							<td class="description"></td>
+							<td class="price">Price</td>
+							<td class="quantity">Quantity</td>
+							<td class="total">Total</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr>
+							<td class="cart_product">
+								<a href=""><img src="images/cart/two.png" alt=""></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href="">Colorblock Scuba</a></h4>
+								<p>Web ID: 1089772</p>
+							</td>
+							<td class="cart_price">
+								<p>$59</p>
+							</td>
+							<td class="cart_quantity">
+								<div class="cart_quantity_button">
+									<a class="cart_quantity_up" href=""> + </a>
+									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+									<a class="cart_quantity_down" href=""> - </a>
+								</div>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">$59</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="cart_product">
+								<a href=""><img src="images/cart/three.png" alt=""></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href="">Colorblock Scuba</a></h4>
+								<p>Web ID: 1089772</p>
+							</td>
+							<td class="cart_price">
+								<p>$59</p>
+							</td>
+							<td class="cart_quantity">
+								<div class="cart_quantity_button">
+									<a class="cart_quantity_up" href=""> + </a>
+									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+									<a class="cart_quantity_down" href=""> - </a>
+								</div>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">$59</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+							<td colspan="2">
+								<table class="table table-condensed total-result">
+									<tr>
+										<td>Cart Sub Total</td>
+										<td>$59</td>
+									</tr>
+									<tr class="shipping-cost">
+										<td>Shipping Cost</td>
+										<td>Free</td>										
+									</tr>
+									<tr>
+										<td style="color: #D62617;font-size:22px;">Total</td>
+										<td><span>$61</span></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+
+			<div class="shopper-informations">
+				<div class="step-one">
+					<h2 class="heading">Step 1 (Signup/Already have an account??)</h2>
+				</div>
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="shopper-info">
+							<p>New User Signup!</p>
+							<form>
+								<!--<input type="text" placeholder="Display Name">-->
+								<input type="text" placeholder="User Name *" required>
+								<input type="text" placeholder="Email *" required>
+								<input type="password" placeholder="Password *" required>
+								<input type="password" placeholder="Confirm password *" required>
+								<input type="submit" value="Submit" name="signup_submit" class="btn btn-primary">
+							</form>
+							<!--<a class="btn btn-primary" href="">Get Quotes</a>
+							<a class="btn btn-primary" href="">Submit</a>-->
+						</div>
+					</div>
+					<div class="col-sm-2 ">
+						<div class="shopper-info"style="margin-left:50px;">
+							<p style="color: #fff" class="or">OR</p>
+						</div>
+					</div>
+					<div class="col-sm-5 clearfix">
+						<div class="shopper-info">
+							<p>Login to your account</p>
+								<form>
+									<input type="text" placeholder="Email *" required>
+									<input type="password" placeholder="password *" required>
+									<input type="submit" name="login_submit" value="Submit" class="btn btn-primary">
+								</form>	
+						</div>
+					</div>					
+				</div>
+			</div>
+
+			<div class="shopper-informations">
+				<div class="step-one">
+					<h2 class="heading">Step 2 (Enter Your Delivery Address..)</h2>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="shopper-info">
+							<p>Delivery Address</p>
+								<form>
+									<input type="text" placeholder="Name">
+									<input type="text" placeholder="Address *">
+									<input type="text" placeholder="Mobile Phone *">
+									<input type="text" placeholder="Zip / Postal Code *">
+									<select style="padding:10px">
+										<option>-- State / City / Region --</option>
+										<option>Dhaka</option>
+										<option>Barisal</option>
+										<option>Chittagong</option>
+										<option>Comilla</option>
+										<option>Sylhet</option>
+										<option>Khulna</option>
+										<option>Rajshahi</option>
+										<option>Rangpur</option>
+									</select>
+									<br><br>
+									<input type="submit" name="delivery_address_submit" value="Submit" class="btn btn-primary">
+								</form>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</section> <!--/#cart_items-->
+
+	<?php include("footer.php");?>
