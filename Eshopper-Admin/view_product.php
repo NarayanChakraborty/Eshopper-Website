@@ -90,18 +90,26 @@
       				</div>
       			</div>
               <!-- page start-->
+			  <?php include_once("../config.php");?>
               <div class="row">
                 <div class="col-sm-12">
-                  <h2>Showing Latest 10 Product. </h2>
+                  <h2>Listed Products of Last 7 Days. </h2>
                 </div>
               </div>
-              <div class="row">
+			     <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
                           
-                          <table class="table table-striped table-advance table-hover">
-                           <tbody>
-                              <tr>
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             Advanced Tables
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                         <tr>
                                  <th style="border: 1px solid #e3e3e3"><i class="icon_info_alt"></i> Product ID</th>
                                  <th style="border: 1px solid #e3e3e3"><i class="icon_documents"></i> Name</th>
                                  <th style="border: 1px solid #e3e3e3"><i class="icon_creditcard"></i> Price</th>
@@ -113,136 +121,101 @@
                                 
                                  <th style="border: 1px solid #e3e3e3"><i class="icon_cogs"></i> Action</th>
                               </tr>
-                              <tr>
-                                 <td style="border: 1px solid #e3e3e3">1000</td>
-                                 <td style="border: 1px solid #e3e3e3">Spider-man Printed red T-shirt.</td>
-                                 <td style="border: 1px solid #e3e3e3">$10</td>
-                                 <td style="border: 1px solid #e3e3e3">Mens</td>
-                                 <td style="border: 1px solid #e3e3e3">T-shirt</td>
-                                 <td style="border: 1px solid #e3e3e3">Lotto</td>
-                                 <td style="border: 1px solid #e3e3e3">12-11-2015</td>
-                                 <td style="border: 1px solid #e3e3e3">
-                                  <div class="btn-group">
-                                      <a class="btn btn-primary fancybox" href="#inline1"title="View image"><i class="icon_plus_alt2"></i></a>
-                                      <!--Fancy Box-->
-                                      <div id="inline1"style="display:none;width:700px;margin:10px 30px">
-                                        <h3 style= "border-bottom: 2px solid #295498; color:#0C86AC;margin-bottom:10px;" >Product Details</h3>
-                                        <div class="shopper-info">
-                                          <h4>Product Image</h4>
-                                          <img src="img/bg-1.jpg" width="450" height="400">
-                                          <h4>Product Details</h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
-                                          </p>
-                                          <h4>Product Size</h4>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Small : <strong style="color: #FE980F">3</strong></i>
-                                          </p>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Medium : <strong style="color: #FE980F">5</strong></i>
-                                          </p>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Large : <strong style="color: #FE980F">2</strong></i>
-                                          </p>
-                                        </div>
-                                      </div>
-                                      <!--Fancy box End-->
-                                      <a class="btn btn-success" title="Edit this Product" href="#"><i class="icon_check_alt2"></i></a>
-                                      <a class="btn btn-danger"title="Delete This product" href="#"><i class="icon_close_alt2"></i></a>
-                                  </div>
-                                  </td>
-                              </tr>
-                              <tr>
-                                 <td style="border: 1px solid #e3e3e3">1001</td>
-                                 <td style="border: 1px solid #e3e3e3">Broken-heart printed bed sheet</td>
-                                 <td style="border: 1px solid #e3e3e3">$29</td>
-                                 <td style="border: 1px solid #e3e3e3">Home</td>
-                                 <td style="border: 1px solid #e3e3e3">N/A</td>
-                                 <td style="border: 1px solid #e3e3e3">RFL</td>
-                                 <td style="border: 1px solid #e3e3e3">12-11-2015</td>
-                                 <td style="border: 1px solid #e3e3e3">
-                                  <div class="btn-group">
-                                      <a class="btn btn-primary fancybox" href="#inline1"title="View image"><i class="icon_plus_alt2"></i></a>
-                                      <!--Fancy Box-->
-                                      <div id="inline1"style="display:none;width:700px;margin:10px 30px">
-                                        <h3 style= "border-bottom: 2px solid #295498; color:#0C86AC;margin-bottom:10px;" >Product Details</h3>
-                                        <div class="shopper-info">
-                                          <h4>Product Image</h4>
-                                          <img src="img/bg-1.jpg" width="450" height="400">
-                                          <h4>Product Details</h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
-                                          </p>
-                                          <h4>Product Size</h4>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Small : <strong style="color: #FE980F">3</strong></i>
-                                          </p>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Medium : <strong style="color: #FE980F">5</strong></i>
-                                          </p>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Large : <strong style="color: #FE980F">2</strong></i>
-                                          </p>
-                                        </div>
-                                      </div>
-                                      <!--Fancy box End-->
-                                      <a class="btn btn-success"title="Edit this Product" href="#"><i class="icon_check_alt2"></i></a>
-                                      <a class="btn btn-danger"title="Delete This product" href="#"><i class="icon_close_alt2"></i></a>
-                                  </div>
-                                  </td>
-                              </tr>
-                              <tr>
-                                 <td style="border: 1px solid #e3e3e3">1002</td>
-                                 <td style="border: 1px solid #e3e3e3">Heart Printed Violet T-shirt.</td>
-                                 <td style="border: 1px solid #e3e3e3">$32</td>
-                                 <td style="border: 1px solid #e3e3e3">Womens</td>
-                                 <td style="border: 1px solid #e3e3e3">T-shirt</td>
-                                 <td style="border: 1px solid #e3e3e3">Lotto</td>
-                                 <td style="border: 1px solid #e3e3e3">12-11-2015</td>
-                                 <td style="border: 1px solid #e3e3e3">
-                                  <div class="btn-group">
-                                      <a class="btn btn-primary fancybox" href="#inline1"title="View image"><i class="icon_plus_alt2"></i></a>
-                                      <!--Fancy Box-->
-                                      <div id="inline1"style="display:none;width:700px;margin:10px 30px">
-                                        <h3 style= "border-bottom: 2px solid #295498; color:#0C86AC;margin-bottom:10px;" >Product Details</h3>
-                                        <div class="shopper-info">
-                                          <h4>Product Image</h4>
-                                          <img src="img/bg-1.jpg" width="450" height="400">
-                                          <h4>Product Details</h4>
-                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
-                                          </p>
-                                          <h4>Product Size</h4>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Small : <strong style="color: #FE980F">3</strong></i>
-                                          </p>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Medium : <strong style="color: #FE980F">5</strong></i>
-                                          </p>
-                                          <p>
-                                            <i class=" fa fa-arrow-right"> Large : <strong style="color: #FE980F">2</strong></i>
-                                          </p>
-                                        </div>
-                                      </div>
-                                      <!--Fancy box End-->
-                                      <a class="btn btn-success"title="Edit this Product" href="#"><i class="icon_check_alt2"></i></a>
-                                      <a class="btn btn-danger" title="Delete This product" href="#"><i class="icon_close_alt2"></i></a>
-                                  </div>
-                                  </td>
-                              </tr>
-                                       
-                           </tbody>
-                        </table>
-                      </section>
-                  </div>
-              </div>
+                                    </thead>
+                                    
+									<tbody>
+									     <?php
+										  $statement =$db->prepare("SELECT * FROM tbl_products where p_arival_date>DATE_SUB(CURDATE(), INTERVAL 7 DAY)");
+										  $statement->execute();
+										  $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+										  foreach ($result as $row) {
+                                          ?> 
+										 <tr class="odd gradeX">
+									        <td><?php echo $row['p_id']; ?></td>
+                                            <td><?php echo $row['p_name']; ?></td>
+                                            <td><?php echo $row['p_price']; ?></td>
+                                            <td ><?php 
+                                                    
+										  $statement1 = $db->prepare("SELECT p_cat_name FROM tbl_products_category where p_cat_id=?");
+										  $statement1->execute(array($row['p_cat_id']));
+										  $result1 = $statement1->fetch();
+												echo $result1['p_cat_name'];	
+											?></td>
+                                            <td ><?php 
+											$statement1 = $db->prepare("SELECT p_subcat_name FROM tbl_products_subcategory where p_subcat_id=?");
+										    $statement1->execute(array($row['p_subcat_id']));
+										    $result1 = $statement1->fetch();
+												echo $result1['p_subcat_name'];
+											?></td>
+											<td><?php 
+														
+											$statement1 = $db->prepare("SELECT p_brand_name FROM tbl_products_brand where p_brand_id=?");
+										    $statement1->execute(array($row['p_brand_id']));
+										    $result1 = $statement1->fetch();
+												echo $result1['p_brand_name'];
+
+											?></td>
+                                            <td><?php echo $row['p_arival_date']; ?></td>
+                                            <td style="padding-left:40px;">
+											 <div class="btn-group">
+													  <a class="btn btn-primary fancybox" href="#inline<?php echo $row['p_id'];?>"title="View image"><i class="icon_plus_alt2"></i></a>
+													  <!--Fancy Box-->
+													  
+													  <div id="inline<?php echo $row['p_id'];?>"style="display:none;width:700px;margin:10px 30px">
+														<h3 style= "border-bottom: 2px solid #295498; color:#0C86AC;margin-bottom:10px;" >Product Details</h3>
+														<div class="shopper-info">
+														
+														  <h4><?php echo $row['p_name']; ?></h4>
+														  <img src="img/products/<?php echo $row['p_img'];?>" width="450" height="400">
+														  <h4>Product Details</h4>
+														  <p>
+														  <?php echo $row['p_details']; ?>
+														  </p>
+														  <h4>Product Stock</h4>
+														  <p>
+															<i class=" fa fa-arrow-right"> Small : <strong style="color: #FE980F"><?php echo $row['p_small'] ; ?></strong></i>
+														  </p>
+														  <p>
+															<i class=" fa fa-arrow-right"> Medium : <strong style="color: #FE980F"><?php echo $row['p_medium']; ?></strong></i>
+														  </p>
+														  <p>
+															<i class=" fa fa-arrow-right"> Large : <strong style="color: #FE980F"><?php echo $row['p_large']; ?></strong></i>
+														  </p>
+														</div>
+													  </div>
+													  <!--Fancy box End-->
+													  <a class="btn btn-success" title="Edit this Product" href="edit_product.php?id=<?php echo $row['p_id']; ?>"><i class="icon_check_alt2"></i>
+													  
+													  </a>
+													  <a class="btn btn-danger"title="Delete This product" href="product_delete.php?id=<?php echo $row['p_id']; ?>"><i class="icon_close_alt2"></i></a>
+												  </div>
+											
+											</td> 
+									     </tr>
+										<?php  
+										}
+										?>
+										 
+									</tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+			        </section>
+			    </div>
+			</div>
+
               <div class="row">
                 <div class="col-sm-12">
-                  <p>Pagination Code goes here.. </p>
+                  
                 </div>
               </div>
               <!-- page end-->
           </section>
       </section>
       <!--main content end-->
-  </section>
   <!-- container section end -->
     <!-- javascripts -->
     <script src="js/jquery.js"></script>
@@ -263,6 +236,19 @@
           });
       </script>
 
-
+	  
+	  
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="js/dataTables/jquery.dataTables.js"></script>
+    <script src="js/dataTables/dataTables.bootstrap.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+         <!-- CUSTOM SCRIPTS -->
+    <script src="js/custom.js"></script>
+    
+	
   </body>
 </html>

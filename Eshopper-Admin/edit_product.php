@@ -1,5 +1,16 @@
-<?php include_once("header.php");?>
 
+
+<?php
+if(!isset($_REQUEST['id']))
+{
+	header('location:view_product.php');
+}
+else
+{
+	$id=$_REQUEST['id'];
+}
+?>
+<?php include_once("header.php");?>
       <!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
@@ -145,6 +156,18 @@ if(isset($_POST['form_add_product'])){
 		{
 			throw new Exception("only jpg,jpeg,png and gif format are allowed");
 		}
+		
+						//To unlink previous image
+				
+				
+                        $statement1=$db->prepare("select * from tbl_products where p_id=?");
+						$statement1->execute(array($id));
+						$result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+						foreach($result1 as $row1)
+						{
+							$real_path= "img/products/".$row1['p_img'];
+						    unlink($real_path);
+						}
 	     
         //upload image to a folder
         move_uploaded_file($_FILES['product_img']['tmp_name'],"img/products/".$f1);		
@@ -172,10 +195,11 @@ if(isset($_POST['form_add_product'])){
            foreach ($result as $row) {
 			   if($row['p_cat_id']==$_POST['re'])
 			   {
-				   	$statement1=$db->prepare("insert into tbl_products(p_name,p_img,p_details,p_price,p_cat_id,p_subcat_id,p_brand_id,p_small,p_medium,p_large,p_arival_date) values(?,?,?,?,?,?,?,?,?,?,?)");
-		   $statement1->execute(array($_POST['product_name'],$f1,$_POST['tinyMCE'],$_POST['product_price'],$row['p_cat_id'],$_POST['product_subcat'],$_POST['brand_name'],$_POST['product_small'],$_POST['product_medium'],$_POST['product_large'],$post_date));
+				 $statement1=$db->prepare("update tbl_products set p_name=?,p_img=?,p_details=?,p_price=?,p_cat_id=?,p_subcat_id=?,p_brand_id=?,
+		   p_small=?,p_medium=?,p_large=?,p_arival_date=?  where p_id=?");
+		   $statement1->execute(array($_POST['product_name'],$f1,$_POST['tinyMCE'],$_POST['product_price'],$row['p_cat_id'],$_POST['product_subcat'],$_POST['brand_name'],$_POST['product_small'],$_POST['product_medium'],$_POST['product_large'],$post_date,$id));
 		   
-		   $success_message="Post is inserted succesfully";
+		   $success_message="Post is Updated succesfully";
 			   }
 			   else{
 				   throw new Exception("Select Correct Category");
@@ -194,10 +218,11 @@ if(isset($_POST['form_add_product'])){
 				throw new Exception('You Must select a subcategory of this product');
 			}
 		}
-	       $statement1=$db->prepare("insert into tbl_products(p_name,p_img,p_details,p_price,p_cat_id,p_subcat_id,p_brand_id,p_small,p_medium,p_large,p_arival_date) values(?,?,?,?,?,?,?,?,?,?,?)");
-		   $statement1->execute(array($_POST['product_name'],$f1,$_POST['tinyMCE'],$_POST['product_price'],$row['p_cat_id'],0,$_POST['brand_name'],$_POST['product_small'],$_POST['product_medium'],$_POST['product_large'],$post_date));
+	       $statement1=$db->prepare("update  tbl_products set p_name=?,p_img=?,p_details=?,p_price=?,p_cat_id=?,p_subcat_id=?,p_brand_id=?,
+		   p_small=?,p_medium=?,p_large=?,p_arival_date=?  where p_id=?");
+		   $statement1->execute(array($_POST['product_name'],$f1,$_POST['tinyMCE'],$_POST['product_price'],$row['p_cat_id'],0,$_POST['brand_name'],$_POST['product_small'],$_POST['product_medium'],$_POST['product_large'],$post_date,$id));
 		   
-		   $success_message="Post is inserted succesfully";
+		   $success_message="Post is updated succesfully";
 	}
 	
 	//=================================Category======================================//
@@ -222,6 +247,30 @@ if(isset($_POST['form_add_product'])){
       					</ol>
       				</div>
       			</div>
+				
+				<!--------------------------Get exiting Data-------------->
+					<?php	
+						$statement1=$db->prepare("select * from tbl_products where p_id=?");
+						$statement1->execute(array($id));
+						$result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+						foreach($result1 as $row1)
+						{
+							$p_name=$row1['p_name'];
+							$p_img=$row1['p_img'];
+							$p_details=$row1['p_details'];
+							$p_price=$row1['p_price'];
+							$p_cat_id=$row1['p_cat_id'];
+							$p_subcat_id=$row1['p_subcat_id'];
+							$p_brand_id=$row1['p_brand_id'];
+							$p_small=$row1['p_small'];
+							$p_medium=$row1['p_medium'];
+							$p_large=$row1['p_large'];
+							$p_arival_date=$row1['p_arival_date'];
+						}
+					?>
+				<!--------------------------Get exiting Data-------------->
+				
+				
               <!-- page start-->
               <div class="row" style="margin-bottom:40px">
                  <div class="col-lg-1">
@@ -229,18 +278,22 @@ if(isset($_POST['form_add_product'])){
                 <div class="col-lg-8">
                   <form method="post" action=""  enctype="multipart/form-data">
                     <h3>Product Name</h3>
-                    <input type="text"class="form-control" placeholder="Product name.." name="product_name" required>
-                    <h3>Product Image</h3>
-                    <input type="file"class="form-control" name="product_img">
+                    <input type="text"class="form-control" value="<?php echo $p_name; ?> " placeholder="Product name.." name="product_name" required>
+                    <h3>Previous Image Preview</h3>
+	                 <img src="img/products/<?php echo $p_img;?>" width="450" height="400">
+	                 <h3>New Image</h3>
+	                 <input type="file"class="form-control" name="product_img">
                     <h3>Product Price</h3>
-                    <input type="text"class="form-control" placeholder="Product prize.." name="product_price" required>
+                    <input type="text"class="form-control" value="<?php echo $p_price;  ?>" placeholder="Product prize.." name="product_price" required>
                     <h3>Product Details</h3>
                     <div class="panel panel-default">
                       <div class="panel-heading">
                         <div class="text-muted bootstrap-admin-box-title">TinyMCE Editor Full </div>
                       </div>
                       <div class="bootstrap-admin-panel-content">
-                          <textarea id="tinymce_full"  name="tinyMCE" rows="10"></textarea>
+                          <textarea id="tinymce_full"  name="tinyMCE" rows="10">
+						  <?php echo $p_details;  ?>
+						  </textarea>
                       </div>
                     </div>
                     <h3>Select Brand</h3>
@@ -251,27 +304,33 @@ if(isset($_POST['form_add_product'])){
                       $statement->execute();
                       $result = $statement->fetchAll(PDO::FETCH_ASSOC);
                       foreach ($result as $row) {
-                        ?>
-                      
-                      <option value="<?php echo $row['p_brand_id'];?>"><?php echo $row['p_brand_name'];?></option>
-                      <?php
+                           if($result['p_brand_id']==$p_brand_id){
+						
+						?><option value="<?php echo $row['p_brand_id'];?>" selected><?php echo $row['p_brand_name'];?></option><?php
                       }
-                      ?>
+					 else
+					 {
+						 ?><option value="<?php echo $row['p_brand_id'];?>"><?php echo $row['p_brand_name'];?></option><?php	
+					 }
+				 }
+				 
+				 ?>
+					   
                     </select>
                     
 					<h3>Insert Amount</h3>
                     <div class="row"> 
                       <div class="col-lg-4">
                         <h4>Small</h4>
-                        <input type="text"class="form-control" value="N/A" name="product_small">
+                        <input type="text"class="form-control" value="<?php echo $p_small; ?>" name="product_small">
                       </div>
                       <div class="col-lg-4">
                         <h4>Medium</h4>
-                        <input type="text"class="form-control" value="N/A"  name="product_medium">
+                        <input type="text"class="form-control" value="<?php echo $p_medium; ?>"  name="product_medium">
                       </div>
                       <div class="col-lg-4">
                         <h4>Large</h4>
-                        <input type="text"class="form-control" value="N/A" name="product_large">
+                        <input type="text"class="form-control" value="<?php echo $p_large; ?>" name="product_large">
                       </div>
                     </div><br>
 					
@@ -291,7 +350,7 @@ if(isset($_POST['form_add_product'])){
                               foreach ($result2 as $row2) {
 
                              if($row1['p_cat_id'] == $row2['p_cat_id'])
-                             {
+                             {	 
                               ?>
                                 <li>
                                   <div class="panel-heading">
@@ -346,7 +405,7 @@ if(isset($_POST['form_add_product'])){
                         ?>                                   
                       </ul>
                     </div><br>
-                    <input type="submit" value="Save" name="form_add_product" class="btn btn-primary" style="width:150px;float:right">
+                    <input type="submit" value="Update" name="form_add_product" class="btn btn-primary" style="width:150px;float:right">
                   </form>
                 </div>
                   <div class="col-lg-3">
