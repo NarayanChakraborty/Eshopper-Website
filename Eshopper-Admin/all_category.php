@@ -181,16 +181,18 @@ try {
                     ?>
 
                     <li>
-                      <label class="selectit"><?php echo $row['p_cat_name']; ?></label> 
-                      <a class="btn btn-success" data-toggle="modal" href="#myModal<?php echo $row['p_cat_id'];?>">
+                      <label class="selectit" style="width:40%;font-size:16px;"><strong><?php echo $row['p_cat_name']; ?></strong></label> 
+					  
+                      <a class="btn btn-info" data-toggle="modal" href="#myModal<?php echo $row['p_cat_id'];?>">
                         Create Subcategory
                       </a>
-                      <a class="btn btn-warning" data-toggle="modal" href="#MyModal<?php echo $row['p_cat_id'];?>">
+                      <a class="btn btn-primary" data-toggle="modal" href="#MyModal<?php echo $row['p_cat_id'];?>">
                         Edit
                       </a>
-                      <a class="btn btn-danger" href="delete_category.php?catID=<?php echo $row['p_cat_id'];?>"  onclick='return confirmDelete();'>
+                      <a class="btn btn-danger" style=""href="delete_category.php?catID=<?php echo $row['p_cat_id'];?>"  onclick='return confirmDelete();'>
                           Delete!
                       </a>
+					  
                       <!-- Modal For ADD-Subcategory Starts-->
                       <div class="modal fade" id="myModal<?php echo $row['p_cat_id'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -244,11 +246,11 @@ try {
                              # code...?>
 
                             <li>
-                              <label class="selectit"><?php echo $row1['p_subcat_name'];?></label>
-                               <a class="btn btn-warning" data-toggle="modal" href="#mYModal<?php echo $row1['p_subcat_id'];?>">
+                              <label class="selectit"style="width:35%;font-size:15px"><?php echo $row1['p_subcat_name'];?></label>
+                               <a class="btn btn-info btn-sm" data-toggle="modal" href="#mYModal<?php echo $row1['p_subcat_id'];?>">
                                 Edit
                               </a>
-                              <a class="btn btn-danger" href="delete_subcategory.php?subcatID=<?php echo $row1['p_subcat_id'];?>"  onclick='return confirmDelete();'>
+                              <a class="btn btn-danger btn-sm" href="delete_subcategory.php?subcatID=<?php echo $row1['p_subcat_id'];?>"  onclick='return confirmDelete();'>
                                   Delete!
                               </a>
                               <!--Edit Sub-category Stats-->
