@@ -40,86 +40,53 @@
 								<li><a href="index.php" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Category<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-
+                                       <?php include_once('config.php'); ?> 
+										<?php
+										
+										$statement=$db->prepare('select * from tbl_products_category');
+										$statement->execute();
+										$result=$statement->fetchAll(PDO::FETCH_ASSOC);
+										foreach($result as $row)
+										{
+										?>
+										
+										
                                     	<!--category-productsr-->
 												<li>
 													<div class="panel-heading">
 														<h4 class="panel-title">
-														<a data-toggle="collapse" data-parent="#accordian" href="#sports">
+														<a data-toggle="collapse" data-parent="#accordian" href="#sports<?php echo $row['p_cat_id']; ?>">
 																<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-																Sportswear
+																<?php echo $row['p_cat_name']; ?>
 															</a>
 														</h4>
 													</div>
-													<div id="sports" class="panel-collapse collapse">
+													<div id="sports<?php echo $row['p_cat_id']; ?>" class="panel-collapse collapse">
 														<div class="panel-body">
 															<ul>
-																<li><a href="product.php">Nike </a></li>
-																<li><a href="product.php">Under Armour </a></li>
-																<li><a href="product.php">Adidas </a></li>
-																<li><a href="product.php">Puma</a></li>
-																<li><a href="product.php">ASICS </a></li>
-															</ul>
-														</div>
-													</div>
-												</li>
-												<li>
-													<div class="panel-heading">
-														<h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#accordian" href="#men">
-																<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-																Mens
-															</a>
-														</h4>
-													</div>
-													<div id="men" class="panel-collapse collapse">
-														<div class="panel-body">
-															<ul>
-																<li><a href="product.php">Fendi</a></li>
-																<li><a href="product.php">Guess</a></li>
-																<li><a href="product.php">Valentino</a></li>
-																<li><a href="product.php">Dior</a></li>
-																<li><a href="product.php">Versace</a></li>
+															
+															<?php 
+															$statement1=$db->prepare('select * from tbl_products_subcategory where p_cat_id=?');
+															$statement1->execute(array($row['p_cat_id']));
+															$result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+															foreach($result1 as $row1)
+															{
+															?>
+															 
+																<li><a href="#"><?php echo $row1['p_subcat_name']; ?></a></li>
+																<?php
+															}
+															?>
 															</ul>
 														</div>
 													</div>
 												</li>
 												
-												<li>
-													<div class="panel-heading">
-														<h4 class="panel-title">
-															<a data-toggle="collapse" data-parent="#accordian" href="#women">
-																<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-																Womens
-															</a>
-														</h4>
-													</div>
-													<div id="women" class="panel-collapse collapse">
-														<div class="panel-body">
-															<ul>
-																<li><a href="product.php">Fendi</a></li>
-																<li><a href="product.php">Guess</a></li>
-																<li><a href="product.php">Valentino</a></li>
-															</ul>
-														</div>
-													</div>
-												</li>
-												<li>
-													<div class="panel-heading">
-														<h4 class="panel-title"><a href="product.php">Kids</a></h4>
-													</div>
-												</li>
-												<li>
-													<div class="panel-heading">
-														<h4 class="panel-title"><a href="product.php">Fashion</a></h4>
-													</div>
-												</li>
-												<li>
-													<div class="panel-heading">
-														<h4 class="panel-title"><a href="product.php">Households</a></h4>
-													</div>
-												</li>
 											<!--/category-products-->
+											
+										<?php
+										}
+										?>
 						              </ul>
                                 </li> 
 								<li class="dropdown"><a href="blog.php">Blog</a>
@@ -213,122 +180,73 @@
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Sportswear
-										</a>
-									</h4>
-								</div>
-								<div id="sportswear" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="product.php">Nike </a></li>
-											<li><a href="product.php">Under Armour </a></li>
-											<li><a href="product.php">Adidas </a></li>
-											<li><a href="product.php">Puma</a></li>
-											<li><a href="product.php">ASICS </a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#mens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Mens
-										</a>
-									</h4>
-								</div>
-								<div id="mens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="product.php">Fendi</a></li>
-											<li><a href="product.php">Guess</a></li>
-											<li><a href="product.php">Valentino</a></li>
-											<li><a href="product.php">Dior</a></li>
-											<li><a href="product.php">Versace</a></li>
-											<li><a href="product.php">Armani</a></li>
-											<li><a href="product.php">Prada</a></li>
-											<li><a href="product.php">Dolce and Gabbana</a></li>
-											<li><a href="product.php">Chanel</a></li>
-											<li><a href="product.php">Gucci</a></li>
-										</ul>
-									</div>
-								</div>
+							  
+							  <?php
+										//Category accessed
+										
+										$statement2=$db->prepare('select * from tbl_products_category');
+										$statement2->execute();
+										$result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
+										foreach($result2 as $row2)
+										{
+										?>
+							
+							
+											<div class="panel-heading">
+												<h4 class="panel-title">
+													<a data-toggle="collapse" data-parent="#accordian" href="#sportswear<?php echo $row2['p_cat_id']; ?>">
+														<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+														<?php echo $row2['p_cat_name']; ?>
+													</a>
+												</h4>
+											</div>
+
+											
+										<div id="sportswear<?php echo $row2['p_cat_id']; ?>" class="panel-collapse collapse">
+											
+											<div class="panel-body">
+										     <ul>
+											<?php 
+													$statement3=$db->prepare('select * from tbl_products_subcategory where p_cat_id=?');
+													$statement3->execute(array($row2['p_cat_id']));
+													$result3=$statement3->fetchAll(PDO::FETCH_ASSOC);
+													foreach($result3 as $row3)
+													{
+														?>
+															 
+														<li><a href="#"><?php echo $row3['p_subcat_name']; ?></a></li>
+														<?php
+												     }
+											?>
+												</ul>
+									        </div>
+										</div>
+											
+								<?php
+									}
+								?>
 							</div>
 							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#womens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Womens
-										</a>
-									</h4>
-								</div>
-								<div id="womens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="product.php">Fendi</a></li>
-											<li><a href="product.php">Guess</a></li>
-											<li><a href="product.php">Valentino</a></li>
-											<li><a href="product.php">Dior</a></li>
-											<li><a href="product.php">Versace</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="product.php">Kids</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="product.php">Fashion</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="product.php">Households</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="product.php">Interiors</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="product.php">Clothing</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="product.php">Bags</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="product.php">Shoes</a></h4>
-								</div>
-							</div>
+							
 						</div><!--/category-products-->
 					
 						<div class="brands_products"><!--brands_products-->
 							<h2>Brands</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
-									<li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
-									<li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-									<li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
-									<li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
-									<li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
-									<li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
-									<li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+								
+                                  <?php 
+                                     $brand_statement=$db->prepare("select * from tbl_products_brand ");
+									 $brand_statement->execute();
+									 $brand_result=$brand_statement->fetchAll(PDO::FETCH_ASSOC);
+									 foreach($brand_result as $brandrow)
+									 {
+                                    ?>								  
+								
+									<li><a href="#"> <span class="pull-right"><?php echo "(".rand(10,100).")" ;?></span><?php echo $brandrow['p_brand_name']; ?></a></li>	
+									<?php
+									 }
+									 ?>
 								</ul>
 							</div>
 						</div><!--/brands_products-->

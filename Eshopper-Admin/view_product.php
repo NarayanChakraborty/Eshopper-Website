@@ -187,7 +187,34 @@
 													  <a class="btn btn-success" title="Edit this Product" href="edit_product.php?id=<?php echo $row['p_id']; ?>"><i class="icon_check_alt2"></i>
 													  
 													  </a>
-													  <a class="btn btn-danger"title="Delete This product" href="product_delete.php?id=<?php echo $row['p_id']; ?>"><i class="icon_close_alt2"></i></a>
+													  <a class="btn btn-danger"  title="Delete This product" data-toggle="modal" data-target="#productModal<?php echo $row['p_id'];?>"><i class="icon_close_alt2"></i>
+													   </a>
+													  
+																		  
+											<!-- Modal -->
+													<div id="productModal<?php echo $row['p_id'];?>" class="modal fade " role="dialog">
+													  <div class="modal-dialog">
+
+														<!-- Modal content-->
+														<div class="modal-content">
+														  <div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+															<h4 class="modal-title">DELETE Confirmation</h4>
+														  </div>
+														  <div class="modal-body">
+															<h4>Are You Confirm To Delete This Element?</h4>
+														  </div>
+														  <div class="modal-footer">
+															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+															<a class="btn btn-danger btn-ok" href="product_delete.php?id=<?php echo $row['p_id']; ?>" >Confirm</a>
+														  </div>
+														</div>
+
+													  </div>
+													</div>
+												
+													  
+													  
 												  </div>
 											
 											</td> 

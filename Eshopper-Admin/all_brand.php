@@ -207,7 +207,7 @@
 										<h4 class="modal-title">DELETE Confirmation</h4>
 									  </div>
 									  <div class="modal-body">
-										<h4>Are You Confirm To Delete This Element</h4>
+										<h4>Are You Confirm To Delete This Element?</h4>
 									  </div>
 									  <div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -298,11 +298,6 @@
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
-   <script type="text/javascript">
-     function confirmDelete() {
-        return confirm("Are you sure you want to Delete this data?")
-      }
-  </script>
 
   </body>
 </html>

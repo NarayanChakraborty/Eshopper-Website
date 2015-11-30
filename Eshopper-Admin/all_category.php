@@ -189,7 +189,8 @@ try {
                       <a class="btn btn-primary" data-toggle="modal" href="#MyModal<?php echo $row['p_cat_id'];?>">
                         Edit
                       </a>
-                      <a class="btn btn-danger" style=""href="delete_category.php?catID=<?php echo $row['p_cat_id'];?>"  onclick='return confirmDelete();'>
+                      <a class="btn btn-danger" data-toggle="modal"
+							  data-target="#catModal<?php echo $row['p_cat_id'];?>"    >
                           Delete!
                       </a>
 					  
@@ -214,6 +215,38 @@ try {
                         </div>
                       </div>
                       <!-- modal For ADD-Subcategory Ends-->
+					  
+					  
+					  <!-------------FOR Delete Category-------------->
+							  
+							  <!-- Modal -->
+								<div id="catModal<?php echo $row['p_cat_id'];?>" class="modal fade " role="dialog">
+								  <div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">DELETE Confirmation</h4>
+									  </div>
+									  <div class="modal-body">
+										<h4>Are You Confirm To Delete This Element?</h4>
+									  </div>
+									  <div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<a class="btn btn-danger btn-ok" href="delete_category.php?catID=<?php echo $row['p_cat_id'];?>" >Confirm</a>
+									  </div>
+									</div>
+
+								  </div>
+								</div>
+															  
+															  
+							  <!-------------FOR Delete-------------->
+					  
+					  
+					  
+					  
                       <!--Mymodal Edit Category Starts-->
                       <!-- Modal -->
                       <div class="modal fade" id="MyModal<?php echo $row['p_cat_id'];?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -250,7 +283,8 @@ try {
                                <a class="btn btn-info btn-sm" data-toggle="modal" href="#mYModal<?php echo $row1['p_subcat_id'];?>">
                                 Edit
                               </a>
-                              <a class="btn btn-danger btn-sm" href="delete_subcategory.php?subcatID=<?php echo $row1['p_subcat_id'];?>"  onclick='return confirmDelete();'>
+                              <a class="btn btn-danger btn-sm" data-toggle="modal"
+							  data-target="#subcatModal<?php echo $row1['p_subcat_id'];?>">
                                   Delete!
                               </a>
                               <!--Edit Sub-category Stats-->
@@ -275,6 +309,35 @@ try {
                                 </div>
                               </div>
                               <!-- modal -->
+							  
+							  <!-------------FOR Delete SubCategory-------------->
+							  
+							  <!-- Modal -->
+								<div id="subcatModal<?php echo $row1['p_subcat_id'];?>" class="modal fade " role="dialog">
+								  <div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">DELETE Confirmation</h4>
+									  </div>
+									  <div class="modal-body">
+										<h4>Are You Confirm To Delete This Element?</h4>
+									  </div>
+									  <div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<a class="btn btn-danger btn-ok"  href="delete_subcategory.php?subcatID=<?php echo $row1['p_subcat_id'];?>" >Confirm</a>
+									  </div>
+									</div>
+
+								  </div>
+								</div>
+															  
+															  
+							  <!-------------FOR Delete-------------->
+							  
+							  
                             </li><br>
 
                            <?php
@@ -291,7 +354,7 @@ try {
                         ?>
                         <div class="alert alert-block alert-danger fade in">
                           <button data-dismiss="alert" class="close close-sm" type="button">
-                          <i class="icon-remove"></i>
+                          <i class="icon-remove"></i>X
                           </button>
                           <strong>Opps!&nbsp; </strong><?php echo $error_message;?>
                        </div>
@@ -301,19 +364,17 @@ try {
                        ?>
                        <div class="alert alert-success fade in">
                           <button data-dismiss="alert" class="close close-sm" type="button">
-                            <i class="icon-remove"></i>
+                            <i class="icon-remove"></i>X
                           </button>
-                          <strong>Well done!&nbsp; </strong><?php echo $success_message;?>
+                          <strong>Opps!&nbsp; </strong><?php echo $success_message;?>
                        </div>
-                       <?php
-                        }
-                      ?>
-                  <?php
+                        <?php
+                      }
                       if(isset($error_message1)){
                         ?>
                         <div class="alert alert-block alert-danger fade in">
                           <button data-dismiss="alert" class="close close-sm" type="button">
-                          <i class="icon-remove"></i>
+                          <i class="icon-remove"></i>X
                           </button>
                           <strong>Opps!&nbsp; </strong><?php echo $error_message1;?>
                        </div>
@@ -323,19 +384,17 @@ try {
                        ?>
                        <div class="alert alert-success fade in">
                           <button data-dismiss="alert" class="close close-sm" type="button">
-                            <i class="icon-remove"></i>
+                            <i class="icon-remove"></i>X
                           </button>
-                          <strong>Well done!&nbsp; </strong><?php echo $success_message1;?>
+                          <strong>Opps!&nbsp; </strong><?php echo $success_message1;?>
                        </div>
-                       <?php
-                        }
-                      ?>
-                      <?php
+                        <?php
+                      }
                       if(isset($error_message2)){
                         ?>
                         <div class="alert alert-block alert-danger fade in">
                           <button data-dismiss="alert" class="close close-sm" type="button">
-                          <i class="icon-remove"></i>
+                          <i class="icon-remove"></i>X
                           </button>
                           <strong>Opps!&nbsp; </strong><?php echo $error_message2;?>
                        </div>
@@ -345,19 +404,18 @@ try {
                        ?>
                        <div class="alert alert-success fade in">
                           <button data-dismiss="alert" class="close close-sm" type="button">
-                            <i class="icon-remove"></i>
+                            <i class="icon-remove"></i>X
                           </button>
                           <strong>Well done!&nbsp; </strong><?php echo $success_message2;?>
                        </div>
                        <?php
                         }
-                      ?>
-                      <?php
+
                       if(isset($error_message3)){
                         ?>
                         <div class="alert alert-block alert-danger fade in">
                           <button data-dismiss="alert" class="close close-sm" type="button">
-                          <i class="icon-remove"></i>
+                          <i class="icon-remove"></i>X
                           </button>
                           <strong>Opps!&nbsp; </strong><?php echo $error_message3;?>
                        </div>
@@ -367,7 +425,7 @@ try {
                        ?>
                        <div class="alert alert-success fade in">
                           <button data-dismiss="alert" class="close close-sm" type="button">
-                            <i class="icon-remove"></i>
+                            <i class="icon-remove"></i>X
                           </button>
                           <strong>Well done!&nbsp; </strong><?php echo $success_message3;?>
                        </div>
@@ -396,11 +454,7 @@ try {
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
-    <script type="text/javascript">
-      function confirmDelete() {
-        return confirm("Are you sure you want to Delete this data?")
-      }
-    </script>
+
 
   </body>
 </html>
