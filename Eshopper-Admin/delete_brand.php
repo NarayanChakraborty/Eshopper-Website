@@ -1,17 +1,19 @@
 <?php
-if(!isset($_REQUEST['B_ID']))
+if(!isset($_REQUEST['ID']))
 {
-	header("location: all_brand.php");
+	header("location:all_brand.php");
 }
 else
 {
-	$B_ID = $_REQUEST['B_ID'];
+		$id=$_REQUEST['ID'];
 }
 
-include_once ("../config.php");
+?>
+<?php include_once("../config.php"); ?>
+<?php
 
-$statement = $db->prepare("DELETE FROM tbl_products_brand WHERE p_brand_id=?");
-$statement->execute(array($B_ID));
+$statement1=$db->prepare('delete from tbl_products_brand where p_brand_id=?');
+$statement1->execute(array($id));
 
-header("location: all_brand.php");
+header("location:all_brand.php");
 ?>
