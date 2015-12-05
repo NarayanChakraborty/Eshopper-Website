@@ -1561,7 +1561,7 @@ input[type="number"]::-webkit-inner-spin-button {
   line-height: 1.428571429;
   color: #8e8e93;
   vertical-align: middle;
-  background-color: #ffffff;
+  background-color: #fffff;
   border: 1px solid #c7c7cc;
   border-radius: 4px;  
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
