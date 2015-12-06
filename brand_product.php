@@ -12,8 +12,7 @@ else
 ?>
 <?php include_once("header.php");?>
 		
-	
-	<section id="advertisement">
+<section id="advertisement">
 		<div class="container">
 			<img src="images/shop/advertisement.jpg" alt="" />
 		</div>

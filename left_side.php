@@ -6,30 +6,30 @@
 							  <?php
 										//Category accessed
 										
-										$statement2=$db->prepare('select * from tbl_products_category');
-										$statement2->execute();
-										$result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
-										foreach($result2 as $row2)
+										$statement1=$db->prepare('select * from tbl_products_category');
+										$statement1->execute();
+										$result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+										foreach($result1 as $row1)
 										{
-											$statement3 = $db->prepare("SELECT DISTINCT p_cat_id FROM tbl_products_subcategory");
-                                            $statement3->execute();
-                                            $result3 = $statement3->fetchAll(PDO::FETCH_ASSOC);
-                                            foreach ($result3 as $row3) {
+											$statement2 = $db->prepare("SELECT DISTINCT p_cat_id FROM tbl_products_subcategory");
+                                            $statement2->execute();
+                                            $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
+                                            foreach ($result2 as $row2) {
 
-                                            if($row2['p_cat_id'] == $row3['p_cat_id']){
+                                            if($row1['p_cat_id'] == $row2['p_cat_id']){
 										?>
 							
 											<div class="panel-heading">
 												<h4 class="panel-title">
-													<a data-toggle="collapse" data-parent="#accordian" href="#sportswear<?php echo $row2['p_cat_id']; ?>">
+													<a data-toggle="collapse" data-parent="#accordian" href="#sportswear<?php echo $row1['p_cat_id']; ?>">
 														<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-														<?php echo $row2['p_cat_name']; ?>
+														<?php echo $row1['p_cat_name']; ?>
 													</a>
 												</h4>
 											</div>
 
 											
-										<div id="sportswear<?php echo $row2['p_cat_id']; ?>" class="panel-collapse collapse">
+										<div id="sportswear<?php echo $row1['p_cat_id']; ?>" class="panel-collapse collapse">
 											
 											<div class="panel-body">
 										     <ul>
@@ -133,4 +133,5 @@
 							<img src="images/home/shipping.jpg" alt="" />
 						</div><!--/shipping-->
 					
+					</div>
 					</div>

@@ -27,7 +27,7 @@ else
 				</div>	
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Items From Your Selected Brand</h2>
+						<h2 class="title text-center">Items From Your Selected Category</h2>
 						<?php
 						include_once('config.php');
 						?>

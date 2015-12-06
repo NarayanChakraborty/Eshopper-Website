@@ -195,7 +195,7 @@ if(isset($_POST['form_add_product'])){
 			}
 		}
 	       $statement1=$db->prepare("insert into tbl_products(p_name,p_img,p_details,p_price,p_cat_id,p_subcat_id,p_brand_id,p_small,p_medium,p_large,p_arival_date) values(?,?,?,?,?,?,?,?,?,?,?)");
-		   $statement1->execute(array($_POST['product_name'],$f1,$_POST['tinyMCE'],$_POST['product_price'],$row['p_cat_id'],0,$_POST['brand_name'],$_POST['product_small'],$_POST['product_medium'],$_POST['product_large'],$post_date));
+		   $statement1->execute(array($_POST['product_name'],$f1,$_POST['tinyMCE'],$_POST['product_price'],$_POST['re'],0,$_POST['brand_name'],$_POST['product_small'],$_POST['product_medium'],$_POST['product_large'],$post_date));
 		   
 		   $success_message="Post is inserted succesfully";
 	}

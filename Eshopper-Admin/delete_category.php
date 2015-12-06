@@ -10,7 +10,7 @@ else
 ?>
 <?php include_once("../config.php");?>
 <?php
-$statement = $db->prepare("DELETE FROM tbl_products_subcategory WHERE p_cat_id=?");
+$statement = $db->prepare("DELETE FROM tbl_products WHERE p_cat_id=?");
 $statement->execute(array($catID));
 
 $statement1 = $db->prepare("DELETE FROM tbl_products_category WHERE p_cat_id=?");

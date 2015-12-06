@@ -230,7 +230,8 @@ try {
 										<h4 class="modal-title">DELETE Confirmation</h4>
 									  </div>
 									  <div class="modal-body">
-										<h4>Are You Confirm To Delete This Element?</h4>
+										<h4>This operation will delete all products under this Category.<br>
+										Are You Confirm To Delete  This Category?</h4>
 									  </div>
 									  <div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -323,7 +324,8 @@ try {
 										<h4 class="modal-title">DELETE Confirmation</h4>
 									  </div>
 									  <div class="modal-body">
-										<h4>Are You Confirm To Delete This Element?</h4>
+										<h4>This operation will delete all products under this subcategory.<br>
+										Are You Confirm To Delete This Subcategory?</h4>
 									  </div>
 									  <div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

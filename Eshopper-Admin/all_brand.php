@@ -207,7 +207,8 @@
 										<h4 class="modal-title">DELETE Confirmation</h4>
 									  </div>
 									  <div class="modal-body">
-										<h4>Are You Confirm To Delete This Element?</h4>
+										<h4>This operation will delete all products under this brand.<br>
+										Are You Confirm To Delete This brand?</h4>
 									  </div>
 									  <div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

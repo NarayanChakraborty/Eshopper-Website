@@ -10,8 +10,11 @@ else
 ?>
 <?php include_once("../config.php");?>
 <?php
-$statement  = $db->prepare("DELETE FROM tbl_products_subcategory WHERE p_subcat_id=?");
+$statement  = $db->prepare("DELETE FROM tbl_products WHERE p_subcat_id=?");
 $statement->execute(array($subcatID));
+
+$statement1  = $db->prepare("DELETE FROM tbl_products_subcategory WHERE p_subcat_id=?");
+$statement1->execute(array($subcatID));
 header("location: all_category.php");
 
 ?>

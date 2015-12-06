@@ -96,13 +96,21 @@
 								<li class="dropdown"><a href="#">Category<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                        <?php include_once('config.php'); ?> 
-										<?php
+                                       
+									   <?php
+										//Category accessed
 										
-										$statement=$db->prepare('select * from tbl_products_category');
-										$statement->execute();
-										$result=$statement->fetchAll(PDO::FETCH_ASSOC);
-										foreach($result as $row)
+										$statement1=$db->prepare('select * from tbl_products_category');
+										$statement1->execute();
+										$result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+										foreach($result1 as $row1)
 										{
+											$statement2 = $db->prepare("SELECT DISTINCT p_cat_id FROM tbl_products_subcategory");
+                                            $statement2->execute();
+                                            $result2 = $statement2->fetchAll(PDO::FETCH_ASSOC);
+                                            foreach ($result2 as $row2) {
+
+                                            if($row1['p_cat_id'] == $row2['p_cat_id']){
 										?>
 										
 										
@@ -110,29 +118,29 @@
 												<li>
 													<div class="panel-heading">
 														<h4 class="panel-title">
-														<a data-toggle="collapse" data-parent="#accordian" href="#sports<?php echo $row['p_cat_id']; ?>">
+														<a data-toggle="collapse" data-parent="#accordian" href="#sports<?php echo $row1['p_cat_id']; ?>">
 																<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-																<?php echo $row['p_cat_name']; ?>
+																<?php echo $row1['p_cat_name']; ?>
 															</a>
 														</h4>
 													</div>
-													<div id="sports<?php echo $row['p_cat_id']; ?>" class="panel-collapse collapse">
+													<div id="sports<?php echo $row1['p_cat_id']; ?>" class="panel-collapse collapse">
 														<div class="panel-body">
-															<ul>
-															
-															<?php 
-															$statement1=$db->prepare('select * from tbl_products_subcategory where p_cat_id=?');
-															$statement1->execute(array($row['p_cat_id']));
-															$result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
-															foreach($result1 as $row1)
-															{
-															?>
-															 
-																<li><a href="#"><?php echo $row1['p_subcat_name']; ?></a></li>
-																<?php
-															}
-															?>
+														 <ul>
+														<?php 
+																$statement3=$db->prepare('select * from tbl_products_subcategory where p_cat_id=?');
+																$statement3->execute(array($row2['p_cat_id']));
+																$result3=$statement3->fetchAll(PDO::FETCH_ASSOC);
+																foreach($result3 as $row3)
+																{
+																	?>
+																		 
+																	<li><a href="subcat_product.php?cat_id=<?php echo $row2['p_cat_id'];?> & subcat_id=<?php echo $row3['p_subcat_id'];?>"><?php echo $row3['p_subcat_name']; ?></a></li>
+																	<?php
+																 }
+														?>
 															</ul>
+
 														</div>
 													</div>
 												</li>
@@ -141,8 +149,43 @@
 											
 										<?php
 										}
+									}
+								}	
 										?>
+										<li>
+										
+									<div class="panel-heading">
+								
+											<?php
+									  $statement4 = $db->prepare("SELECT * FROM tbl_products_category WHERE p_cat_id NOT IN(SELECT DISTINCT p_cat_id FROM tbl_products_subcategory)");
+									  $statement4->execute();
+									  $result4 = $statement4->fetchAll(PDO::FETCH_ASSOC);
+									  
+									  foreach ($result4 as $row4) {
+									?>
+										 
+											
+											<h4 class="panel-title">
+															
+												<a href="cat_product.php?c_id=<?php echo $row4['p_cat_id']; ?>">
+																	
+													<?php echo $row4['p_cat_name']; ?>
+														</a>
+											</h4>
+											
+										
+											<?php
+						       }
+						  ?>
+								
+							</div>
+										
+										</li>
+										
 						              </ul>
+									  
+									  
+									  
                                 </li> 
 								<li class="dropdown"><a href="blog.php">Blog</a>
                                 </li> 
