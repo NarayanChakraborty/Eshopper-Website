@@ -54,7 +54,7 @@ else
 											<div class="overlay-content">
 												<h2><?php echo $single_product['p_price']; ?></h2>
 											<p><?php echo $single_product['p_name']; ?></p>
-												<a href="product_details.php" style="margin-bottom:23px" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>Details</a>
+												<a href="product_details.php?id=<?php echo $single_product['p_id']; ?>" style="margin-bottom:23px" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>Details</a>
 											</div>
 										</div>
 								</div>

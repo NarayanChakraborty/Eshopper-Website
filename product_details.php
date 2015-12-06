@@ -1,3 +1,16 @@
+<?php
+if(isset($_REQUEST['id']))
+{
+	$product_id=$_REQUEST['id'];
+}
+else{
+	header('location:index.php');
+}
+
+?>
+
+
+
 <?php include_once("header.php");?>
 		
 
@@ -10,15 +23,30 @@
 				</div>
 				
 				<div class="col-sm-9 padding-right">
+				
 					<div class="product-details"><!--product-details-->
+					
+									
+                    	<?php include('config.php'); ?>
+						<?php
+						$statement1=$db->prepare('select * from tbl_products where p_id=?');
+						$statement1->execute(array($product_id));
+						$result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+						foreach($result1 as $row1)
+						{
+						?>
+
 						<div class="col-sm-5">
 							<!--Code for Zoom-->
 							<div class="view-product">
-								<img id="zoom_01" src='images/product-details/roy.jpg' data-zoom-image="images/product-details/roy.jpg"/>
+								<img id="zoom_01" src="Eshopper-Admin/img/products/<?php echo $row1['p_img'];?>" data-zoom-image="Eshopper-Admin/img/products/<?php echo $row1['p_img'];?>" width="450" height="400"/>
 							</div>
 							<!--Code for zoom ends-->
 							<p>Mouse hover for zoom</p>
 						</div>
+					
+						
+						
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
@@ -65,6 +93,11 @@
 								</div>
 							</div><!--/product-information-->
 						</div>
+						
+						<?php
+						}
+						?>
+						
 					</div><!--/product-details-->
 					
 					<div class="category-tab shop-details-tab"><!--category-tab-->
