@@ -1,5 +1,4 @@
 <?php 
-
 if($_REQUEST['c_id'])
 {
 	$cat_id=$_REQUEST['c_id'];

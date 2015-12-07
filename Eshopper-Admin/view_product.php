@@ -89,11 +89,40 @@
       					</ol>
       				</div>
       			</div>
-              <!-- page start-->
+				                    
+				                   <form method="POST">
+                                        <div class="form-group">
+                                            <h3>Select Products For :</h3>
+                                            <select class="form-control" name="product">
+											   <option  value="All">Last All Days</option>
+                                                <option value="7">Last 7 Days</option>
+                                                <option value="30">Last 30 Days</option>
+                                                <option value="180">Last 6 Months</option>
+                                                <option value="365">Last 1 Year</option>
+												
+                                            </select><br>
+											<input class="btn btn-info" style="float:right;" type="submit" value="Select"/>
+                                        </div>
+                                  </form>
+
+			  <!--------- page start-->
 			  <?php include_once("../config.php");?>
+			  <?php 
+			  if(isset($_POST['product']))
+			  {
+				  $value=$_POST['product'];
+			  }
+			  else
+			  {
+				  $value="All";
+			  }
+			  
+			  ?>
+			  
+			  
               <div class="row">
                 <div class="col-sm-12">
-                  <h2>Listed Products of Last 7 Days. </h2>
+                  <h2>Listed Products of Last <?php echo $value; ?> Days. </h2>
                 </div>
               </div>
 			     <div class="row">
@@ -125,8 +154,16 @@
                                     
 									<tbody>
 									     <?php
-										  $statement =$db->prepare("SELECT * FROM tbl_products where p_arival_date>DATE_SUB(CURDATE(), INTERVAL 7 DAY)");
-										  $statement->execute();
+										 if($value!="All")
+										 {
+										  $statement =$db->prepare("SELECT * FROM tbl_products where p_arival_date>DATE_SUB(CURDATE(), INTERVAL ? DAY)");
+										  $statement->execute(array($value));
+										 }
+										 else
+										 {
+											 $statement =$db->prepare("SELECT * FROM tbl_products");
+										    $statement->execute(array());
+										 }
 										  $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 										  foreach ($result as $row) {
                                           ?> 
@@ -156,7 +193,7 @@
 
 											?></td>
                                             <td><?php echo $row['p_arival_date']; ?></td>
-                                            <td style="padding-left:40px;">
+                                            <td style="padding-left:50px;">
 											 <div class="btn-group">
 													  <a class="btn btn-primary fancybox" href="#inline<?php echo $row['p_id'];?>"title="View image"><i class="icon_plus_alt2"></i></a>
 													  <!--Fancy Box-->

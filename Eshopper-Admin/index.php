@@ -1,7 +1,5 @@
 <?php include_once("header.php");?>
 
-
-
       <!--sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse ">
