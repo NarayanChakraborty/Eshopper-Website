@@ -50,23 +50,45 @@ else{
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-								<p>Web ID: 1089772</p>
+								<h2><?php echo $row1['p_name']; ?></h2>
+								<p>Web ID: <?php echo $row1['p_id']; ?></p>
 								<img src="images/product-details/rating.png" alt="" /><br>
-								<h1 style="color: #FE980F">US $59</h1>
-								<p><strong>Brand:</strong>&nbsp; E-SHOPPER</p>
+								<h1 style="color: #FE980F">BDT <?php echo $row1['p_price']; ?></h1>
+								<p><strong>Brand:</strong>&nbsp; <?php $statement2=$db->prepare("select * from tbl_products_brand where p_brand_id=?");
+								$statement2->execute(array($row1['p_brand_id']));
+								$result2=$statement2->fetchAll(PDO::FETCH_ASSOC);
+								foreach($result2 as $row2)
+								{
+				                        echo $row2['p_brand_name'];
+								}
+					            
+								
+								?>
+								</p>
 								<table>
 									<tr>
 										<td><p><strong>Availability:</strong>&nbsp;</p></td>
-										<td><p><i class=" fa fa-arrow-right"> Small : <strong style="color: #FE980F">3</strong></i></p></td>
+										<td><p><i class=" fa fa-arrow-right"> Small : <strong style="color: #FE980F">
+										<?php
+										echo $row1['p_small'];
+										?>
+										</strong></i></p></td>
 									</tr>
 									<tr>
 										<td></td>
-										<td><p><i class=" fa fa-arrow-right"> Medium : <strong style="color: #FE980F">5</strong></i></p></td>
+										<td><p><i class=" fa fa-arrow-right"> Medium : <strong style="color: #FE980F">
+										<?php
+										echo $row1['p_medium'];
+										?>
+										</strong></i></p></td>
 									</tr>
 									<tr>
 										<td></td>
-										<td><p><i class=" fa fa-arrow-right"> Large : <strong style="color: #FE980F">2</strong></i></p></td>
+										<td><p><i class=" fa fa-arrow-right"> Large : <strong style="color: #FE980F">
+										<?php
+										echo $row1['p_large'];
+										?>
+										</strong></i></p></td>
 									</tr>
 								</table>
 								<form method="post" action="cart.php">
