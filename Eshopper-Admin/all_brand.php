@@ -87,9 +87,59 @@
 				throw new Exception('Brand Name Can not be Empty');
 			}
 			
+	/*---------------------------------Image Upload------------------------------*/
+	
+	if(getimagesize($_FILES['new_brand_img']['tmp_name'])==FALSE)
+		 {
+		   throw new Exception("Please select an image"); //access only image
+		 }
+		 if($_FILES['new_brand_img']['size']>1000000){
+		 throw new Exception("Sorry,your file is too large"); //image file must be<1MB
+		 }
+		
+		
+	    //To generate id(next auto increment value from tbl_post)
+		$statement=$db->prepare("show table status like 'tbl_products' ");
+		$statement->execute();
+		$result=$statement->fetchAll();
+		foreach($result as $row)
+		$new_id=$row[10];
+		   
+		//access image process one;   
+	    $up_filename=$_FILES['new_brand_img']['name'];   //file_name
+		$file_basename=substr($up_filename,0,strripos($up_filename,'.'));//orginal image name
+		$file_ext=substr($up_filename,strripos($up_filename,'.')); //extension
+		$f2=$new_id.$file_ext;  //Rename filename;
+
+	    
+		//only allow png ,jpg,jpeg,gif
+		if(($file_ext!='.png')&&($file_ext!='.jpg')&&($file_ext!='.jpeg')&&($file_ext!=['.gif']))
+		{
+			throw new Exception("only jpg,jpeg,png and gif format are allowed");
+		}
+		
+						//To unlink previous image
+				
+				
+                        $statement1=$db->prepare("select * from tbl_products_brand where p_brand_id=?");
+						$statement1->execute(array($id));
+						$result1=$statement1->fetchAll(PDO::FETCH_ASSOC);
+						foreach($result1 as $row1)
+						{
+							$real_path= "img/brands/".$row1['p_brand_img'];
+						    unlink($real_path);
+						}
+	     
+        //upload image to a folder
+        move_uploaded_file($_FILES['new_brand_img']['tmp_name'],"img/brands/".$f2);		
+	
+	
+   //----------------------------------Image Upload----------------------------
+			
+
 			$brand_name=mysql_real_escape_string($_POST['edit_brand_name']);
-			$statement1=$db->prepare('update tbl_products_brand set p_brand_name=? where p_brand_id=?');
-			$statement1->execute(array($brand_name,$_POST['hidden_id_for_edit_brand']));
+			$statement2=$db->prepare('update tbl_products_brand set p_brand_name=?,p_brand_image=? where p_brand_id=?');
+			$statement2->execute(array($brand_name,$f2,$_POST['hidden_id_for_edit_brand']));
 						
 			
 			$success_message1='Brand Name Successfully Updated';
@@ -222,10 +272,12 @@
 									  <h4 class="modal-title">Edit This Brand Name</h4>
 									</div>
 									<div class="modal-body">
-									  <h4>Brand Logo</h4>
-									  <img src="img/brands/<?php echo $row['p_brand_image'];?>" width="200" height="150">
-									  <h4>Brand Name :</h4>
-									  <form method="post" action="" enctype="multipart/form-data">
+									  <h4>Previous Brand Logo</h4>
+									  <img src="img/brands/<?php echo $row['p_brand_image'];?>" width="120" height="100">
+									  <form method="post" action="" enctype="multipart/form-data">   
+									  <h4>Select New Logo</h4>
+									  <input type="file"class="form-control" name="new_brand_img"><br>
+									  <h4>New Brand Name :</h4>
 										<input type="text"value="<?php echo $row['p_brand_name'];?>"class="form-control" name="edit_brand_name"><br>
 										<button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
 										<input type="hidden" name="hidden_id_for_edit_brand" value="<?php echo $row['p_brand_id'];?>">
