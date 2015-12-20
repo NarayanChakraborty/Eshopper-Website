@@ -114,9 +114,51 @@
 			  {
 				  throw new Exception('Brand Name Can not be empty');
 			  }
+
+ /*---------------------------------Image Upload------------------------------*/
+	
+	if(getimagesize($_FILES['brand_img']['tmp_name'])==FALSE)
+		 {
+		   throw new Exception("Please select an image"); //access only image
+		 }
+		 if($_FILES['brand_img']['size']>2000000){
+		 throw new Exception("Sorry,your file is too large"); //image file must be<1MB
+		 }
+		
+		
+	    //To generate id(next auto increment value from tbl_post)
+		$statement=$db->prepare("show table status like 'tbl_products' ");
+		$statement->execute();
+		$result=$statement->fetchAll();
+		foreach($result as $row)
+		$new_id=$row[10];
+		   
+		//access image process one;   
+	    $up_filename=$_FILES['brand_img']['name'];   //file_name
+		$file_basename=substr($up_filename,0,strripos($up_filename,'.'));//orginal image name
+		$file_ext=substr($up_filename,strripos($up_filename,'.')); //extension
+		$f1=$new_id.$file_ext;  //Rename filename;
+
+	    
+		//only allow png ,jpg,jpeg,gif
+		if(($file_ext!='.png')&&($file_ext!='.jpg')&&($file_ext!='.jpeg')&&($file_ext!=['.gif']))
+		{
+			throw new Exception("only jpg,jpeg,png and gif format are allowed");
+		}
+	     
+        //upload image to a folder
+        move_uploaded_file($_FILES['brand_img']['tmp_name'],"img/brands/".$f1);		
+	
+	
+   //----------------------------------Image Upload----------------------------
+    
+			  
+			  
+			  
+			  
 			  $brand_name=mysql_real_escape_string($_POST['brand_name']);
-			  $statement2=$db->prepare('insert into tbl_products_brand (p_brand_name) values(?)');
-			  $statement2->execute(array($brand_name));
+			  $statement2=$db->prepare('insert into tbl_products_brand (p_brand_name,p_brand_image) values(?,?)');
+			  $statement2->execute(array($brand_name,$f1));
 			  $success_message2="New Brand Success Fully Created";
 		 }
 		 catch(Exception $e)
@@ -180,6 +222,8 @@
 									  <h4 class="modal-title">Edit This Brand Name</h4>
 									</div>
 									<div class="modal-body">
+									  <h4>Brand Logo</h4>
+									  <img src="img/brands/<?php echo $row['p_brand_image'];?>" width="200" height="150">
 									  <h4>Brand Name :</h4>
 									  <form method="post" action="" enctype="multipart/form-data">
 										<input type="text"value="<?php echo $row['p_brand_name'];?>"class="form-control" name="edit_brand_name"><br>
@@ -273,12 +317,13 @@
                        <?php
                         }
                       ?>					 
-						
-						
-						
-					<br><br><h3>New Brand Name</h3>
+												
+					<br><br>
                     <form enctype="multipart/form-data" method="post">
-                      <input type="text"name="brand_name"class="form-control" placeholder="Type Here.."><br>
+                      <h3>New Brand Name</h3>
+					  <input type="text"name="brand_name"class="form-control" placeholder="Type Here..">
+					  <h3>Brand Logo</h3>
+                      <input type="file"class="form-control" name="brand_img"><br>
                       <input type="submit" value="Save" name="form_add_brand"class="btn btn-primary">
                   </form>
 					</div>

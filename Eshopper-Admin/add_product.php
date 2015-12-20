@@ -121,7 +121,7 @@ if(isset($_POST['form_add_product'])){
 		 {
 		   throw new Exception("Please select an image"); //access only image
 		 }
-		 if($_FILES['product_img']['size']>1000000){
+		 if($_FILES['product_img']['size']>2000000){
 		 throw new Exception("Sorry,your file is too large"); //image file must be<1MB
 		 }
 		

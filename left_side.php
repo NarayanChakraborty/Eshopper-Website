@@ -119,12 +119,12 @@
 							<h2>Price Range</h2>
 							<div class="well text-center" style="padding:20px">
 								 <ul class="nav nav-pills nav-stacked">
-									<li><a href="#">$10 - $99</a></li>
-									<li><a href="#">$100 - $199</a></li>
-									<li><a href="#">$200 - $299</a></li>
-									<li><a href="#">$300 - $399</a></li>
-									<li><a href="#">$400 - $499</a></li>
-									<li><a href="#">$500 - Above</a></li>
+									<li><a href="product_by_price.php?a='0' & b='500'">$0 - $500</a></li>
+									<li><a href="product_by_price.php?a='501' & b='1000'">$501 - $1000</a></li>
+									<li><a href="product_by_price.php?a='1001' & b='2000'">$1001 - $2000</a></li>
+									<li><a href="product_by_price.php?a='2001' & b='2500'">$2001 - $2500</a></li>
+									<li><a href="product_by_price.php?a='2501' & b='3000'">$2501 - $3000</a></li>
+									<li><a href="product_by_price.php?a='3001' & b='10000'">$3001 - Above</a></li>
 								</ul>
 							</div>
 						</div><!--/price-range-->
