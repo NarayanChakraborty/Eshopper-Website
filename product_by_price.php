@@ -35,7 +35,7 @@ else
 						
 						<!-------Access Brand Products------------>
 						<?php
-						$brand_product=$db->prepare('select * from tbl_products where p_price>=? and p_price<=?');
+						$brand_product=$db->prepare('select * from tbl_products where p_price between ? and ?');
 						$brand_product->execute(array($low,$high));
 						$all_products=$brand_product->fetchAll(PDO::FETCH_ASSOC);
 						foreach($all_products as $single_product)

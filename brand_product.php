@@ -29,9 +29,17 @@ else
 						<h2 class="title text-center">Items From Your Selected Brand</h2>
 						<?php
 						include_once('config.php');
-						?>
+						
+						
+
+						
+						
+						
+						?>	
+						
 						
 						<!-------Access Brand Products------------>
+						<!----------------
 						<?php
 						$brand_product=$db->prepare('select * from tbl_products where p_brand_id=?');
 						$brand_product->execute(array($brand_id));
@@ -71,12 +79,9 @@ else
 						?>
 
 						
-						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
+						<div class="pagination">
+							<?php echo $pagination;?>
+						</div>
 					</div><!--features_items-->
 				</div>
 			</div>

@@ -117,14 +117,32 @@
 						
 						<div class="price-range"><!--price-range-->
 							<h2>Price Range</h2>
+							<?php
+							$a=1;
+							$b=1000;
+						    ?>
 							<div class="well text-center" style="padding:20px">
 								 <ul class="nav nav-pills nav-stacked">
-									<li><a href="product_by_price.php?a='0' & b='500'">$0 - $500</a></li>
-									<li><a href="product_by_price.php?a='501' & b='1000'">$501 - $1000</a></li>
-									<li><a href="product_by_price.php?a='1001' & b='2000'">$1001 - $2000</a></li>
-									<li><a href="product_by_price.php?a='2001' & b='2500'">$2001 - $2500</a></li>
-									<li><a href="product_by_price.php?a='2501' & b='3000'">$2501 - $3000</a></li>
-									<li><a href="product_by_price.php?a='3001' & b='10000'">$3001 - Above</a></li>
+								 <?php 
+								 for($i=0;$i<5;$i++)
+								 {
+								 ?>
+									<li><a href="product_by_price.php?a=<?php echo $a;?> & b=<?php echo $b; ?>">$<?php echo $a;?> - $<?php echo $b; ?></a></li>
+									
+								<?php
+								$a=$a+1000;
+								$b=$b+1000;
+								}
+								if($i==5)
+								{
+									?>
+									<li><a href="product_by_price.php?a=<?php echo $a;?> & b=<?php 
+									$b=$b+20000;
+									echo $b; ?>">$<?php echo $a;?> - $Above</a></li>
+									
+								<?php
+								}
+								?>
 								</ul>
 							</div>
 						</div><!--/price-range-->
